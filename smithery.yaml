@@ -1,0 +1,24 @@
+name: GitHub MCP Server
+description: MCP Server for GitHub operations - search repos, manage PRs, issues, and code
+owner: Xiao-rx
+homepage: https://github.com/Xiao-rx/github-mcp-server
+verified: false
+license: MIT
+github: Xiao-rx/github-mcp-server
+
+installs:
+  npm: npx -y @smithery/cli install github-mcp-server
+  pypi: pip install github-mcp-server
+  go: go install github.com/Xiao-rx/github-mcp-server@latest
+
+tools:
+  - name: search_repos
+    description: Search GitHub repositories
+  - name: get_pr_details
+    description: Get pull request details
+  - name: create_issue
+    description: Create a new issue
+  - name: list_issues
+    description: List repository issues
+  - name: search_code
+    description: Search code across GitHub
