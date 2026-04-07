@@ -54,6 +54,15 @@ search_code("def main()")             # 搜索代码
 | `list_issues` | 列出仓库 Issues |
 | `search_code` | 全局搜索代码 |
 
+### 支持的平台
+
+| 平台 | 配置文件位置 | 说明 |
+|------|-------------|------|
+| Claude Code | `~/.claude/settings.local.json` | Anthropic 官方 |
+| Cursor | `~/.cursor/mcp.json` | VS Code 分支，AI 功能强 |
+| VS Code (Insider) | `~/.cursor/mcp.json` | 需要 Insider 版本 |
+| OpenClaw | `~/.openclaw/mcp.json` | 开源 AI Agent 框架 |
+
 ### 快速开始
 
 #### 1. 安装依赖
@@ -74,11 +83,41 @@ export GITHUB_TOKEN="ghp_xxxxxxxxxxxx"
 
 > 不配置 Token 也可以用，但速率限制更低（60次/小时 vs 5000次/小时）
 
-#### 3. 在 Claude Code 中使用
+#### 3. 配置 MCP Server
 
-```bash
-# 添加到 ~/.claude/settings.local.json
+**Claude Code** (`~/.claude/settings.local.json`)
+
+```json
+{
+  "mcpServers": {
+    "github": {
+      "command": "python",
+      "args": ["/path/to/github_mcp.py"],
+      "env": {
+        "GITHUB_TOKEN": "your_token_here"
+      }
+    }
+  }
+}
 ```
+
+**Cursor / VS Code Insider** (`~/.cursor/mcp.json`)
+
+```json
+{
+  "mcpServers": {
+    "github": {
+      "command": "python",
+      "args": ["C:\\path\\to\\github_mcp.py"],
+      "env": {
+        "GITHUB_TOKEN": "your_token_here"
+      }
+    }
+  }
+}
+```
+
+**OpenClaw** (`~/.openclaw/mcp.json`)
 
 ```json
 {
